@@ -18,6 +18,9 @@ export const config: Types.Core.GameConfig = {
   physics: {
     //arcade physics plugin manages physics simultations
     default: "arcade",
+    arcade: {
+      gravity: { x: 0, y: 200 },
+    },
   },
   parent: "game-container",
   backgroundColor: "#028af8",

@@ -34,16 +34,12 @@ export class Flappy extends Scene {
       .setOrigin(0);
     console.log("bird.body", this.bird.body);
 
-    // bird.body.gravity.y = 200; //builds up to 200 px per second
-    this.bird.body.velocity.y = 200; //velocity starts at 200 and stays there
+    // this.bird.body.velocity.y = 200; //velocity starts at 200 and stays there?
   }
 
   //update called every frame
   //normally 60fps so 60 times per second called
   //time is currenty time
   //delta time since last frame
-  update(time, delta) {
-    //gravity starts at velocity 0 then build up to gravitry
-    console.log("this.bird.body.gravity.y", this.bird.body.gravity.y);
-  }
+  update(time, delta) {}
 }
