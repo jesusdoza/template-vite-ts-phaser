@@ -5,7 +5,8 @@
 // import { Preloader } from "./scenes/NOT USED/Preloader";
 
 import { Game, Types } from "phaser";
-import { Flappy } from "./scenes/Flappy";
+import { Play } from "./scenes/Play";
+import PreloadScene from "./scenes/Preload";
 
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
@@ -13,7 +14,7 @@ import { Flappy } from "./scenes/Flappy";
 export const config: Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
-  // width: window.innerWidth,
+  // width: window.innerWidth,//make it the window width
   height: 600,
   physics: {
     //arcade physics plugin manages physics simultations
@@ -33,7 +34,7 @@ export const config: Types.Core.GameConfig = {
   // scene: [Boot, Preloader, MainMenu, MainGame, GameOver],//defining multiple scens each with its own preload, create, update methods
 
   //single scene defined and using the functions below
-  scene: [Flappy],
+  scene: [PreloadScene, Play],
 };
 
 export default new Game(config);
