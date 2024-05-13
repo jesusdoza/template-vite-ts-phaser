@@ -116,11 +116,11 @@
         {
          "columns":32,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/Downloads\/First Asset pack.png",
+         "image":"mapTileset.png",
          "imageheight":384,
          "imagewidth":384,
          "margin":0,
-         "name":"First Asset pack",
+         "name":"mapTileset",
          "spacing":0,
          "tilecount":1024,
          "tileheight":12,
