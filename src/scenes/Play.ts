@@ -15,15 +15,25 @@ export class Play extends Scene {
   create() {
     //add image at position x ,y and reference from above
     // this.add.image(this.width / 2, this.height / 2, "sky");
+    const map = this.createMap();
+    const layers = this.createLayers(map);
+  }
 
-    let environment, platforms;
+  createMap() {
     const map = this.make.tilemap({ key: "map" });
-    const tileset1 = map.addTilesetImage("mapTileset", "tileset1");
 
-    //tilset can fail to load
+    return map;
+  }
+
+  createLayers(map: Phaser.Tilemaps.Tilemap) {
+    const tileset1 = map.addTilesetImage("mapTileset", "tileset1");
+    let environment, platforms;
+    //tileset can fail to load checking tileset is loaded
     if (tileset1) {
       environment = map.createLayer("environment", tileset1);
       platforms = map.createLayer("platforms", tileset1);
     }
+
+    return { environment, platforms };
   }
 }
