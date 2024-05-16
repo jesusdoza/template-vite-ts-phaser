@@ -28,15 +28,15 @@
             "scale": 1.0845833333333332,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 353.5920092201306,
-                "y": 315.7894736842105
+                "x": 301.0372646945832,
+                "y": 485.43987706492516
             }
         },
         "C:/Users/halo1/Desktop/gitspace/template-vite-ts-phaser/public/assets/maps/map.json#First Asset pack": {
             "scaleInDock": 1
         },
         "C:/Users/halo1/Desktop/gitspace/template-vite-ts-phaser/public/assets/maps/map.json#mapTileset": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "C:/Users/halo1/Desktop/gitspace/template-vite-ts-phaser/public/assets/maps/map.tmj": {
