@@ -18,13 +18,22 @@ export class Play extends Scene {
     const map = this.createMap();
     const layers = this.createLayers(map);
     const player = this.createPlayer();
+
+    try {
+      if (!layers?.platforms) throw Error("platform layer missing");
+      this.physics.add.collider(player, layers.platforms);
+    } catch (error) {
+      console.log("loading player to platform collicder", error);
+    }
   }
 
   //METHODS
   createPlayer() {
-    const player = this.physics.add.sprite(100, 100, "player");
+    const player = this.physics.add.sprite(100, 50, "player");
     player.body.setGravityY(500);
     player.setCollideWorldBounds(true);
+
+    return player;
   }
   createMap() {
     const map = this.make.tilemap({ key: "map" });
@@ -34,11 +43,14 @@ export class Play extends Scene {
 
   createLayers(map: Phaser.Tilemaps.Tilemap) {
     const tileset1 = map.addTilesetImage("mapTileset", "tileset1");
-    let environment, platforms;
+    let environment;
+    let platforms;
     //tileset can fail to load checking tileset is loaded
     if (tileset1) {
       environment = map.createLayer("environment", tileset1);
       platforms = map.createLayer("platforms", tileset1);
+
+      platforms?.setCollisionByExclusion([-1], true);
     }
 
     return { environment, platforms };
