@@ -19,11 +19,13 @@ export class Play extends Scene {
     const layers = this.createLayers(map);
     const player = this.createPlayer();
 
+    //add platform colliders
     try {
-      if (!layers?.platforms) throw Error("platform layer missing");
-      this.physics.add.collider(player, layers.platforms);
+      if (!layers?.platformColliders)
+        throw Error("platformColliders layer missing");
+      this.physics.add.collider(player, layers.platformColliders);
     } catch (error) {
-      console.log("loading player to platform collicder", error);
+      console.log("error loading platformColliders", error);
     }
   }
 
@@ -35,6 +37,7 @@ export class Play extends Scene {
 
     return player;
   }
+
   createMap() {
     const map = this.make.tilemap({ key: "map" });
 
@@ -42,17 +45,32 @@ export class Play extends Scene {
   }
 
   createLayers(map: Phaser.Tilemaps.Tilemap) {
-    const tileset1 = map.addTilesetImage("mapTileset", "tileset1");
+    const mapTileSet = map.addTilesetImage("mapTileset", "mapTileSet");
     let environment;
     let platforms;
-    //tileset can fail to load checking tileset is loaded
-    if (tileset1) {
-      environment = map.createLayer("environment", tileset1);
-      platforms = map.createLayer("platforms", tileset1);
+    let platformColliders;
 
-      platforms?.setCollisionByExclusion([-1], true);
+    //tileset can fail to load checking tileset is loaded
+    try {
+      if (!mapTileSet) throw Error("map tileset not loaded");
+
+      environment = map.createLayer("environment", mapTileSet);
+      platformColliders = map.createLayer("platform_colliders", mapTileSet);
+      platforms = map.createLayer("platforms", mapTileSet);
+    } catch (error) {
+      console.log("error creatring layers ", error);
     }
 
-    return { environment, platforms };
+    //add collision rules
+    try {
+      if (!platformColliders) throw Error("missing platformColliders");
+
+      //any index of equal values will not be collided with
+      platformColliders.setCollisionByExclusion([-1], true);
+    } catch (error) {
+      console.log("error with platformColliders layer ", error);
+    }
+
+    return { environment, platforms, platformColliders };
   }
 }
