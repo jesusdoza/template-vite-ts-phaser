@@ -1,0 +1,45 @@
+{
+    "_id": {
+        "$oid": "663249231e03bfa152ee44c7"
+    },
+    "version": "3",
+    "title": "New Repair test controller",
+    "boardType": "other",
+    "searchTags": [],
+    "engineMake": "other",
+    "procedureArr": [
+        {
+            "images": [
+                ""
+            ],
+            "imageObjs": [
+                {
+                    "imageUrl": "",
+                    "imageThumb": "",
+                    "caption": "",
+                    "imageId": "f83839df-766e-4b67-9579-c85a6573d126",
+                    "folder": "testFolder",
+                    "_id": {
+                        "$oid": "663249231e03bfa152ee44c9"
+                    }
+                }
+            ],
+            "procedureNum": {
+                "$numberInt": "0"
+            },
+            "instructions": "",
+            "thumbs": [],
+            "imagesIdArr": [],
+            "_id": {
+                "$oid": "663249231e03bfa152ee44c8"
+            }
+        }
+    ],
+    "group": "public",
+    "visibility": "public",
+    "createdBy": "public",
+    "removed": false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}

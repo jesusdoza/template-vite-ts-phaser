@@ -17,8 +17,15 @@ export class Play extends Scene {
     // this.add.image(this.width / 2, this.height / 2, "sky");
     const map = this.createMap();
     const layers = this.createLayers(map);
+    const player = this.createPlayer();
   }
 
+  //METHODS
+  createPlayer() {
+    const player = this.physics.add.sprite(100, 100, "player");
+    player.body.setGravityY(500);
+    player.setCollideWorldBounds(true);
+  }
   createMap() {
     const map = this.make.tilemap({ key: "map" });
 

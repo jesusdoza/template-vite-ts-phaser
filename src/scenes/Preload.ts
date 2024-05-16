@@ -13,6 +13,7 @@ class Preload extends Scene {
     this.load.setPath("assets");
     this.load.tilemapTiledJSON("map", "/maps/map.json");
     this.load.image("tileset1", "/maps/mapTileset.png");
+    this.load.image("player", "/player/movements/idle01.png");
   }
 
   //intialize game instances
