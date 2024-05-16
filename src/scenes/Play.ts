@@ -5,10 +5,12 @@ export class Play extends Scene {
   VELOCITY = 200;
   width = config?.width ? Number(config.width) : 500;
   height = config?.height ? Number(config.height) : 500;
+  cursors: Phaser.Types.Input.Keyboard.CursorKeys | undefined;
 
+  player: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
+  playerSpeed: number = 0;
   constructor() {
     super("PlayScene");
-    //load assets
   }
 
   //intialize game instances
@@ -17,16 +19,22 @@ export class Play extends Scene {
     // this.add.image(this.width / 2, this.height / 2, "sky");
     const map = this.createMap();
     const layers = this.createLayers(map);
-    const player = this.createPlayer();
+    this.player = this.createPlayer();
 
     //add platform colliders
     try {
-      if (!layers?.platformColliders)
+      if (!layers?.platformColliders) {
         throw Error("platformColliders layer missing");
-      this.physics.add.collider(player, layers.platformColliders);
+      }
+      this.physics.add.collider(this.player, layers.platformColliders);
     } catch (error) {
       console.log("error loading platformColliders", error);
     }
+
+    this.playerSpeed = 200;
+
+    //keyboard controls
+    this.cursors = this.input.keyboard?.createCursorKeys();
   }
 
   //METHODS
@@ -72,5 +80,22 @@ export class Play extends Scene {
     }
 
     return { environment, platforms, platformColliders };
+  }
+
+  update() {
+    let left, right;
+
+    //cursor is valid
+    if (this.cursors) {
+      ({ left, right } = this.cursors);
+
+      if (left.isDown) {
+        this.player.setVelocityX(-this.playerSpeed);
+      } else if (right.isDown) {
+        this.player.setVelocityX(this.playerSpeed);
+      } else {
+        this.player.setVelocityX(0);
+      }
+    }
   }
 }
