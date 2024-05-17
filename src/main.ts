@@ -33,7 +33,7 @@ export const config: Types.Core.GameConfig = {
 
   // scene: [Boot, Preloader, MainMenu, MainGame, GameOver],//defining multiple scens each with its own preload, create, update methods
 
-  //single scene defined and using the functions below
+  //scenes that are in project must be same as key provided on scene constructor
   scene: [PreloadScene, Play],
 };
 

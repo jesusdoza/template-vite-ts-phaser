@@ -11,8 +11,14 @@ class Preload extends Scene {
 
   preload() {
     this.load.setPath("assets");
+
+    ///map file
     this.load.tilemapTiledJSON("map", "/maps/map.json");
+
+    ///tile map
     this.load.image("mapTileSet", "/maps/mapTileset.png");
+
+    ///player sprite
     this.load.image("player", "/player/movements/idle01.png");
   }
 
