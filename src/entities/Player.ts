@@ -10,10 +10,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     super(scene, x, y, "player");
 
     //add current sprite 'this' instance to scene we pass in
-    scene.add.existing(this);
-
-    //add physics to this instance from the scene we pass in
-    scene.physics.add.existing(this);
+    scene.add
+      .existing(this)
+      //add physics to this instance from the scene we pass in
+      .scene.physics.add.existing(this);
 
     this.init();
   }
@@ -21,7 +21,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   init() {
     this.setGravityY(this.gravity);
     this.cursors = this.scene.input.keyboard?.createCursorKeys();
-
+    if (this.body) {
+      this.body.setSize(20, 30, true);
+      this.setOffset(10, 30);
+    }
     this.setCollideWorldBounds();
   }
 
