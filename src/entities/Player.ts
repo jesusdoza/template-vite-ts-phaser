@@ -16,6 +16,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       .scene.physics.add.existing(this);
 
     this.init();
+    this.initEvents();
   }
 
   init() {
@@ -28,8 +29,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds();
   }
 
-  preUpdate(time: number, delta: number): void {
-    super.preUpdate(time, delta);
+  initEvents() {
+    //event listener for upate event
+    this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
+  }
+
+  update(): void {
     let left, right;
 
     //cursor is valid
