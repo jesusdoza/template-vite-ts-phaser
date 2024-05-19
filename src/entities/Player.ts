@@ -54,6 +54,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
+    //choose animation to play
     this.body?.velocity.x != 0
       ? this.play("run", true)
       : this.play("idle", true);
