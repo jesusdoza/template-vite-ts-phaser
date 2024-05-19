@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+import initAnimations from "./playerAnims";
+
 class Player extends Phaser.Physics.Arcade.Sprite {
   gravity = 500;
   playerSpeed = 200;
@@ -23,16 +25,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setGravityY(this.gravity);
     this.cursors = this.scene.input.keyboard?.createCursorKeys();
 
-    ///animation
-    this.scene.anims.create({
-      key: "run",
-      frameRate: 8,
-      repeat: -1,
-      frames: this.scene.anims.generateFrameNumbers("player", {
-        start: 11, // what frame in spritsheet to start
-        end: 16,
-      }),
-    });
+    initAnimations(this.scene.anims);
 
     this.setCollideWorldBounds();
   }
@@ -62,7 +55,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     //dont play run animation if its already playing
     //ignore if playing "true"
     // 'run' name of animation
-    this.play("run", true);
+    this.play("idle", true);
   }
 }
 
