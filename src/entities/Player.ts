@@ -22,7 +22,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   init() {
     this.setGravityY(this.gravity);
     this.cursors = this.scene.input.keyboard?.createCursorKeys();
+
     if (this.body) {
+      //resize body box and offset the image to fit inside
       this.body.setSize(20, 30, true);
       this.setOffset(10, 30);
     }
@@ -31,6 +33,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   initEvents() {
     //event listener for upate event
+    //listen for update event and run update method on this class instance and this instance is the context
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
   }
 
