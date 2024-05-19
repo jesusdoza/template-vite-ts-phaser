@@ -18,8 +18,15 @@ class Preload extends Scene {
     ///tile map
     this.load.image("mapTileSet", "/maps/mapTileset.png");
 
-    ///player sprite
-    this.load.image("player", "/player/movements/idle01.png");
+    ///player sprite idle
+    // this.load.image("player", "/player/movements/idle01.png");
+
+    ///player sprite movement
+    this.load.spritesheet("player", "/player/move_sprite_1.png", {
+      frameWidth: 32,
+      frameHeight: 38,
+      spacing: 32, //take of empty space till next frame in sprite sheet
+    });
   }
 
   //intialize game instances

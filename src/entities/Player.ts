@@ -23,11 +23,17 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setGravityY(this.gravity);
     this.cursors = this.scene.input.keyboard?.createCursorKeys();
 
-    if (this.body) {
-      //resize body box and offset the image to fit inside
-      this.body.setSize(20, 30, true);
-      this.setOffset(10, 30);
-    }
+    ///animation
+    this.scene.anims.create({
+      key: "run",
+      frameRate: 8,
+      repeat: -1,
+      frames: this.scene.anims.generateFrameNumbers("player", {
+        start: 11, // what frame in spritsheet to start
+        end: 16,
+      }),
+    });
+
     this.setCollideWorldBounds();
   }
 
@@ -52,6 +58,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setVelocityX(0);
       }
     }
+
+    //dont play run animation if its already playing
+    //ignore if playing "true"
+    // 'run' name of animation
+    this.play("run", true);
   }
 }
 
