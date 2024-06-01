@@ -74,19 +74,4 @@ export class Play extends Scene {
 
     return { environment, platforms, platformColliders };
   }
-
-  // update() {
-  // let left, right;
-  // //cursor is valid
-  // if (this.cursors) {
-  //   ({ left, right } = this.cursors);
-  //   if (left.isDown) {
-  //     this.player.setVelocityX(-this.playerSpeed);
-  //   } else if (right.isDown) {
-  //     this.player.setVelocityX(this.playerSpeed);
-  //   } else {
-  //     this.player.setVelocityX(0);
-  //   }
-  // }
-  // }
 }

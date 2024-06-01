@@ -22,6 +22,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   init() {
+    //allows this object to take in input
+    this.setInteractive();
+
     this.setGravityY(this.gravity);
     this.cursors = this.scene.input.keyboard?.createCursorKeys();
 
@@ -31,6 +34,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   initEvents() {
+    this.addListener(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+      console.log("click");
+    });
     //event listener for upate event
     //listen for update event and run update method on this class instance and this instance is the context
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);

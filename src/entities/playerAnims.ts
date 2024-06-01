@@ -1,4 +1,4 @@
-export default (anims: Phaser.Animations.AnimationManager) => {
+const initAnimations = (anims: Phaser.Animations.AnimationManager) => {
   ///animation
   anims.create({
     key: "idle",
@@ -20,3 +20,5 @@ export default (anims: Phaser.Animations.AnimationManager) => {
     }),
   });
 };
+
+export default initAnimations;
