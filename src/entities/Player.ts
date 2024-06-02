@@ -30,7 +30,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     initAnimations(this.scene.anims);
 
-    this.setCollideWorldBounds();
+    this.setCollideWorldBounds(true);
   }
 
   initEvents() {
@@ -43,11 +43,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update(): void {
-    let left, right;
-
     //cursor is valid
     if (this.cursors) {
-      ({ left, right } = this.cursors);
+      //destructure left and right and assign to let left and let right
+      const { left, right, space, up } = this.cursors;
 
       if (left.isDown) {
         this.setVelocityX(-this.playerSpeed);
@@ -58,12 +57,22 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       } else {
         this.setVelocityX(0);
       }
+
+      //jump only if on floor
+      if ((space.isDown || up.isDown) && this.isOnFloor()) {
+        this.setVelocityY(-this.playerSpeed);
+      }
     }
 
     //choose animation to play
     this.body?.velocity.x != 0
       ? this.play("run", true)
       : this.play("idle", true);
+  }
+
+  isOnFloor(): boolean {
+    const body = this.body as Phaser.Physics.Arcade.Body;
+    return body.onFloor();
   }
 }
 
