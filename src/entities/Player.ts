@@ -60,7 +60,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
       //jump only if on floor
       if ((space.isDown || up.isDown) && this.isOnFloor()) {
-        this.setVelocityY(-this.playerSpeed);
+        this.setVelocityY(-this.playerSpeed * 1.5);
       }
     }
 
